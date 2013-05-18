@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "coffee-script": "1.x.x",
+	"memjs": "0.5.x",
     "restler": "2.x.x"
   },
   "repository": {

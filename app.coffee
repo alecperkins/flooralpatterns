@@ -1,12 +1,21 @@
 http    = require 'http'
 fs      = require 'fs'
+memjs   = require 'memjs'
 restler = require 'restler'
 sys     = require 'sys'
 url     = require 'url'
 
 
-PORT = process.env.PORT or 5000
+PORT    = process.env.PORT or 5000
 
+if process.env.DEBUG is 'true'
+    cache =
+        get: (k, cb) ->
+            cb()
+            return null
+        set: (k, v, cb)->
+else
+    cache   = memjs.Client.create()
 
 
 server = http.createServer (req, res) ->
@@ -15,8 +24,14 @@ server = http.createServer (req, res) ->
 
     page = url.parse(req.url, true).query.p
 
-    getPhotos page, (data) ->
-        res.end(renderTemplate(data))
+    cache.get req.url, (val) ->
+        if val
+            res.end(val)
+        else
+            getPhotos page, (data) ->
+                rendered_page = renderTemplate(data)
+                res.end(rendered_page)
+                cache.set(req.url, rendered_page)
 
 server.listen(PORT)
 
