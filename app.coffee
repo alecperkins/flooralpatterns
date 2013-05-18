@@ -107,7 +107,6 @@ renderTemplate = (response) ->
                         font-size           : 32px;
                         background-color    : rgba(0,0,0,0.5);
                         color               : rgba(255,255,255,0.7);
-                        line-height         : 1.1;
                     }
                     #footer {
                         height              : 64px;
