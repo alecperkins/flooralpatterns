@@ -67,6 +67,9 @@ renderTemplate = (response) ->
                     a:hover {
                         border-bottom       : 1px solid white;
                     }
+                    h1 a {
+                        padding-bottom      : 5px;
+                    }
                     .image {
                         height              : 306px;
                         width               : 306px;
