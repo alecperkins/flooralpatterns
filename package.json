@@ -1,0 +1,26 @@
+
+{
+  "name": "flooralpatterns",
+  "version": "0.0.1",
+  "description": "#flooralpatterns",
+  "engines": {
+    "node": "0.10.x",
+    "npm":  "1.2.x"
+  },
+  "dependencies": {
+    "coffee-script": "1.x.x",
+    "restler": "2.x.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alecperkins/flooralpatterns.git"
+  },
+  "author": "Alec Perkins <alec@typeish.net>",
+  "license": "proprietary",
+  "contributors": [
+    {
+      "name": "Alec Perkins",
+      "email": "alec@droptype.com"
+    }
+  ]
+}
