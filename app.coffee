@@ -119,7 +119,7 @@ renderTemplate = (response) ->
                 </style>
             </head>
             <body>
-                <h1><a href='/'>#flooralpatterns</a></h1>
+                <h1 id='header'><a href='/'>#flooralpatterns</a></h1>
         """
 
     renderImage = (img) ->
@@ -147,8 +147,13 @@ renderTemplate = (response) ->
                         clearTimeout(resize_timeout);
                         resize_timeout = setTimeout(function(){
                             var BLOCK_WIDTH = 306;
-                            var body_width = window.outerWidth / BLOCK_WIDTH;
-                            document.body.style.width = (body_width.toFixed(0) * BLOCK_WIDTH).toString() + 'px';
+                            var block_count = Math.floor(((window.outerWidth - 32) / BLOCK_WIDTH));
+                            if(block_count===1) {
+                                document.getElementById('header').style['font-size'] = '32px';
+                            } else {
+                                document.getElementById('header').style['font-size'] = '48px';
+                            }
+                            document.body.style.width = (block_count * BLOCK_WIDTH).toString() + 'px';
                         }, 100);
                     }
                     window.onresize();
