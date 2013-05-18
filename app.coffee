@@ -50,7 +50,7 @@ renderTemplate = (response) ->
                         padding             : 0;
                     }
                     body {
-                        padding             : 0;
+                        padding             : 0 16px;
                         font-family         : Helvetica, Arial, sans-serif;
                         background          : #1C1C1C;
                         margin              : 0 auto;
