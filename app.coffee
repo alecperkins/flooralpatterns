@@ -125,11 +125,12 @@ renderTemplate = (response) ->
         """
 
     renderImage = (img) ->
-        image_url   = img.images.low_resolution.url
-        location    = img.location?.name or ''
-        link        = img.link
+        image_url_1x    = img.images.low_resolution.url
+        image_url_2x    = img.images.standard_resolution.url
+        location        = img.location?.name or ''
+        link            = img.link
         return """
-                <a href="#{link}" class='image' style='background-image:url(#{ image_url })'>
+                <a href="#{ link }" class='image' data-onex='#{ image_url_1x }' data-twox='#{ image_url_2x }'>
                     <div class='location'><span>#{ location }</span></div>
                 </a>
             """
@@ -147,6 +148,23 @@ renderTemplate = (response) ->
     markup.push """
                 <script>
                     var resize_timeout = null;
+                    
+                    var images = document.getElementsByClassName('image');
+                    var is_retina = window.devicePixelRatio > 1;
+                    for(var i=0;i<images.length;i++){
+                        (function(){
+                            var img = images[i];
+                            var bg_url = null;
+                            if(is_retina){
+                                bg_url = img.attributes['data-twox'].value;
+                            } else {
+                                bg_url = img.attributes['data-onex'].value;
+                            }
+                            img.style['background-image'] = 'url(' + bg_url + ')';
+                            console.log(img)
+                        })();
+                    }
+                    
                     window.onresize = function(){
                         clearTimeout(resize_timeout);
                         resize_timeout = setTimeout(function(){
