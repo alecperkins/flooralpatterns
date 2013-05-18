@@ -19,7 +19,10 @@
     "url": "git://github.com/alecperkins/flooralpatterns.git"
   },
   "author": "Alec Perkins <alec@typeish.net>",
-  "license": "proprietary",
+  "license": {
+    "type": "Unlicense",
+    "url": "https://raw.github.com/alecperkins/flooralpatterns/master/UNLICENSE"
+  },
   "contributors": [
     {
       "name": "Alec Perkins",
