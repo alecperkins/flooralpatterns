@@ -10,7 +10,9 @@
   "dependencies": {
     "coffee-script": "1.x.x",
 	"memjs": "0.5.x",
-    "restler": "2.x.x"
+    "restler": "2.x.x",
+	"sqwish": "0.2.x",
+	"uglify-js": "2.3.x"
   },
   "repository": {
     "type": "git",
