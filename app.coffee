@@ -109,12 +109,15 @@ renderTemplate = (response) ->
                         color               : rgba(255,255,255,0.7);
                         line-height         : 1.1;
                     }
+                    #footer {
+                        height              : 64px;
+                    }
                     #more {
-                        font-size: 24px;
-                        display: inline-block;
-                        margin: 1em 0;
-                        float: right;
-                        text-align: center;
+                        font-size           : 24px;
+                        display             : inline-block;
+                        margin              : 1em 0;
+                        float               : right;
+                        text-align          : center;
                     }
                 </style>
             </head>
@@ -136,8 +139,10 @@ renderTemplate = (response) ->
     if data
         markup.push(response.data.map(renderImage)...)
 
+    markup.push "<div id='footer'>"
     if response.pagination.next_max_tag_id
         markup.push "<a href='?p=#{ response.pagination.next_max_tag_id }' id='more'>more</a>"
+    markup.push "</div>"
 
 
     markup.push """
@@ -154,7 +159,7 @@ renderTemplate = (response) ->
                                 document.getElementById('header').style['font-size'] = '48px';
                             }
                             document.body.style.width = (block_count * BLOCK_WIDTH).toString() + 'px';
-                        }, 100);
+                        }, 50);
                     }
                     window.onresize();
                 </script>
@@ -163,4 +168,5 @@ renderTemplate = (response) ->
             </body>
             </html>
         """
+
     return markup.join('')
