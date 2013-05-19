@@ -31,9 +31,10 @@ server = http.createServer (req, res) ->
             res.end(val)
         else
             getPhotos page, (data) ->
-                rendered_page = renderTemplate(data)
+                [rendered_page, cacheable] = renderTemplate(data)
                 res.end(rendered_page)
-                cache.set(req.url, rendered_page)
+                if cacheable
+                    cache.set(req.url, rendered_page)
 
 server.listen(PORT)
 
@@ -201,9 +202,12 @@ renderTemplate = (response) ->
     data = response.data
     if data
         markup.push(response.data.map(renderImage)...)
+        cacheable = true
+    else
+        cacheable = false
 
     markup.push "<div id='footer'>"
-    if response.pagination.next_max_tag_id
+    if response.pagination?.next_max_tag_id
         markup.push "<a href='?p=#{ response.pagination.next_max_tag_id }' id='more'>more</a>"
     markup.push "</div>"
 
@@ -213,4 +217,4 @@ renderTemplate = (response) ->
             </html>
         """
 
-    return markup.join('')
+    return [markup.join(''), cacheable]
