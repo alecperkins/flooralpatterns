@@ -1,0 +1,116 @@
+html {
+    padding             : 0;
+}
+body {
+    padding             : 0 16px;
+    font-family         : Helvetica, Arial, sans-serif;
+    background          : #1C1C1C;
+    margin              : 0 auto;
+    font-size           : 0;
+}
+h1 {
+    color               : white;
+    font-size           : 48px;
+}
+a {
+    text-decoration     : none;
+    color               : white;
+}
+a:hover {
+    border-bottom       : 1px solid white;
+}
+h1 a {
+    padding-bottom      : 5px;
+}
+.image {
+    height              : 306px;
+    width               : 306px;
+    display             : inline-block;
+    list-style-type     : none;
+    background-repeat   : no-repeat;
+    background-size     : cover;
+    padding             : 0;
+    margin              : 0;
+    position            : relative;
+    overflow            : hidden;
+}
+.image:hover {
+    border              : 0;
+}
+.image:hover .location {
+    opacity             : 0;
+}
+.location {
+    position            : absolute;
+    bottom              : 16px;
+    left                : 0;
+    right               : 0;
+    opacity             : 1;
+}
+.location span {
+    font-size           : 32px;
+    background-color    : rgba(0,0,0,0.5);
+    color               : rgba(255,255,255,0.7);
+}
+#footer {
+    height              : 64px;
+}
+#more {
+    font-size           : 24px;
+    display             : inline-block;
+    margin              : 1em 0;
+    float               : right;
+    text-align          : center;
+}
+#lightbox {
+    position            : fixed;
+    top                 : 0;
+    left                : 0;
+    right               : 0;
+    bottom              : 0;
+    background          : rgba(0,0,0,0.8);
+    opacity             : 0;
+    pointer-events      : none;
+}
+body.show-lightbox #lightbox {
+    opacity             : 1;
+    pointer-events      : auto;
+}
+body.show-lightbox #image-set, body.show-lightbox #header, body.show-lightbox #footer {
+    -webkit-filter      : blur(3px);
+    -moz-filter         : blur(3px);
+    -ms-filter          : blur(3px);
+    filter              : blur(3px);
+    -webkit-transition-property: filter;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-property: filter;
+    -moz-transition-duration: 0.25s;
+    -ms-transition-property: filter;
+    -ms-transition-duration: 0.25s;
+    transition-property: filter;
+    transition-duration: 0.25s;
+}
+#lightbox img {
+    display             : block;
+    width               : 612px;
+    height              : 612px;
+    position            : absolute;
+    top                 : 0;
+    left                : 0;
+}
+#original-link {
+    position            : absolute;
+    font-size           : 16px;
+}
+
+
+.location, #lightbox, #onex {
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-property: opacity;
+    -moz-transition-duration: 0.25s;
+    -ms-transition-property: opacity;
+    -ms-transition-duration: 0.25s;
+    transition-property: opacity;
+    transition-duration: 0.25s;
+}
